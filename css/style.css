@@ -1,0 +1,173 @@
+/* Logo animation */
+@keyframes logomove {
+    from {
+        width: 25px;
+        opacity: 9;
+    }
+    to {
+        width: 475px;
+        opacity: 1;
+    }
+}
+
+/* Animate the logo when the page loads */
+#logo {
+    animation: logomove 5s;
+    width: 475px;
+}
+
+/* Set the font and background properties */
+body {
+    font-family: "Poppins", serif;
+    background-image: url("../images/concrete_seamless.png");
+    background-color: #f1f1f1;
+}
+
+/* Center headers using flex */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style navigation links using flex*/
+.nav_links {
+   display: flex;
+   flex-direction: column;
+}
+
+/* Set links to not change color when visited */
+.nav_item > a:visited {
+    color: blue;
+}
+
+/* Style header elements within the card class*/
+.card > header {
+    background-color: #288088;
+    border: solid 2px #45ADAD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Add border radius to the top of the card elements */
+.card > header {
+    border-radius: 50px 50px 0 0;
+}
+
+/* Style cards using flex and match border radius with previously defined radius */
+.card {
+    border-radius: 50px 50px 0 0;
+    flex-basis: 450px;
+    align-items: center;
+}
+
+/* Group the prices into a flex display and style it */
+.pricing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+/* Style the gallery images */
+.gallery > img {
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Format the gallery class */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Larger screen size */
+@media screen and (min-width: 900px) {
+
+    /* Reorient the headers to be horizontally organized instead of vertically organized */
+    header {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* Organize the navigation links horizontally as opposed to the previous vertical orientation*/
+    .nav_links {
+        flex-direction: row;
+    }
+
+    /* Shrink cards to fit all of them in one row */
+    .card {
+        flex-basis: 275px;
+    }
+
+    /* Keep the navigation bar at the top of the screen when scrolling */
+    body > header {
+        position: fixed;
+        top: 0;
+    }
+
+    /* Make sure the moving navigation bar does not cover any content */
+    h1 {
+        margin-top: 110px;
+    }
+}
+
+/* Turn off animation for users who prefer reduced motion */
+@media all and (prefers-reduced-motion: reduce) {
+    #logo {
+        animation: none;
+        width: 475px;
+    }
+}
+
+/* Portrait printing view */
+@media print and (orientation: portrait) {
+
+    /* Adjust the font and background */
+    body {
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+
+    /* Make the navigation bar larger so the links can be spaced out */
+    nav {
+        width: 100%;
+    }
+
+    /* Horizontally organize the navigation links and space them out */
+    .nav_links {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    /* Make the cards stay on one line and align them at the bottom of the line */
+    .pricing {
+        flex-wrap: nowrap;
+        align-items: end;
+    }
+
+    /* Resize the cards and add a border */
+    .card {
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* Hide the gallery from the printing page */
+    #gallery, .gallery {
+        display: none;
+    }
+
+    /* Add a thumbs up after the product tagline on the printing page */
+    li:nth-child(2):after {
+        content: "👍";
+    }
+
+    /* Take the thumbs up away from the Prices navigation link, which is selected by the previous block */
+    .nav_item:nth-child(2):after {
+        content: "";
+    }
+}
